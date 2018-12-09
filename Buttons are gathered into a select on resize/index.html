@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>Segmented control</title>
+    <style>
+    body {
+      background-color: lightblue;
+      font-size: 14px;
+    }
+
+    div {
+      display: flex;
+      background-color: white;
+      padding: 10px;
+    }
+
+    button {
+      flex-grow: 1;
+      padding: 10px 0;
+      border-radius: 5px;
+    }
+
+    button:not(:last-child) {
+      margin-right: .5px;
+    }
+
+    select {
+      height: 40px;
+      width: 95%;
+      margin-left: 10px;
+    }
+
+    </style>
+</head>
+<body>
+
+
+</body>
+<script>
+var body = document.querySelector('body');
+var div = document.createElement('div');
+var contentSelect = '<select><option>Sort by price</option><option>Sort by name</option><option>Sort by relevance</option></select>';
+var contentDiv = '<button>Sort by price</button><button>Sort by name</button><button>Sort by relevance</button>';
+
+window.addEventListener('resize', function(event){
+  body.innerHTML = '';
+  if (window.innerWidth < 500) {
+    body.appendChild(div);
+    div.innerHTML = contentSelect;
+  } else {
+    body.appendChild(div);
+    div.innerHTML = contentDiv;
+    var buttons = document.querySelectorAll('button');
+
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function (){
+        buttons.forEach(function (item) {
+          item.style.backgroundColor = 'white';
+        });
+        this.style.backgroundColor = 'pink';
+      });
+    }
+  }
+});
+</script>
+</html>

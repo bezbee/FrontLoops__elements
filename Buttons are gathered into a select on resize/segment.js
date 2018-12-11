@@ -14,5 +14,4 @@
       select.selectedIndex = this.value - 1;
     });
   }
-
 })();
